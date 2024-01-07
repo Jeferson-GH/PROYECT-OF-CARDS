@@ -5,8 +5,8 @@
 
 int main() {
 	JugadorGenerico j1;
-	std::cout << "HOLSAAAAAAAAAAA";
-	std::cout << "Pito";
+	std::cout << "QUIEROR MIMIIIIIIRRRRRRRRRRR";
+	std::cout << "hi";
 
 	return 0;
 }
