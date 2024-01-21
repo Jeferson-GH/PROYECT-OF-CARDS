@@ -131,6 +131,7 @@
     <ClCompile Include="principal.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Carta.h" />
     <ClInclude Include="JugadorGenerico.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
