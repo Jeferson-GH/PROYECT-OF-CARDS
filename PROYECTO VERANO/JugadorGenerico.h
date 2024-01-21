@@ -1,15 +1,16 @@
-#pragma once
-#include <iostream>
-#include <string>
+#ifndef JUGADORGENERICO_H
+#define JUGADORGENERICO_H
+#include "Mano.h"
 
-class JugadorGenerico
-{
-private: 
-	std:: string nombre; 
-
-public: 
+class JugadorGenerico {
+private:
+	std::string nickname;
+public:
 	JugadorGenerico();
-
-
+	~JugadorGenerico();
+	Carta* pedirCarta();
+	bool sePaso();
 };
 
+
+#endif 

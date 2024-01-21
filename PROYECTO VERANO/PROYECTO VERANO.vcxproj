@@ -132,7 +132,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Carta.h" />
+    <ClInclude Include="Dealer.h" />
+    <ClInclude Include="Juego.h" />
+    <ClInclude Include="Jugador.h" />
     <ClInclude Include="JugadorGenerico.h" />
+    <ClInclude Include="Lista.h" />
+    <ClInclude Include="Mano.h" />
+    <ClInclude Include="Mazo.h" />
+    <ClInclude Include="Nodo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
