@@ -10,8 +10,8 @@ private:
 public:
 	Carta();
 	~Carta();
-	int getValor() { return valor; }
-	int getPalo() { return palo; }
+	int getValor();
+	int getPalo();
 	void voltear();
 
 };

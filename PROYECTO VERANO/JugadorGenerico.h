@@ -3,10 +3,12 @@
 #include "Mano.h"
 
 class JugadorGenerico {
-private:
+protected:
 	std::string nickname;
+	Mano* mano;
 public:
 	JugadorGenerico();
+	JugadorGenerico(std::string, Mano*);
 	~JugadorGenerico();
 	Carta* pedirCarta();
 	bool sePaso();

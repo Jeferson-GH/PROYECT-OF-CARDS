@@ -3,9 +3,9 @@
 #include "JugadorGenerico.h"
 
 class Jugador : public JugadorGenerico {
-	Jugador();
+public: 
+	Jugador(std::string);
 	~Jugador();
-	Carta* pedirCarta();
 };
 
 #endif

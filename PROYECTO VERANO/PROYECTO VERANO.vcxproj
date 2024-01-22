@@ -127,8 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Carta.cpp" />
+    <ClCompile Include="Dealer.cpp" />
+    <ClCompile Include="Juego.cpp" />
+    <ClCompile Include="Jugador.cpp" />
     <ClCompile Include="JugadorGenerico.cpp" />
-    <ClCompile Include="principal.cpp" />
+    <ClCompile Include="Lista.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mano.cpp" />
+    <ClCompile Include="Mazo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Carta.h" />

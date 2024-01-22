@@ -3,9 +3,9 @@
 #include "JugadorGenerico.h"
 
 class Dealer : public JugadorGenerico {
+public:
 	Dealer();
 	~Dealer();
-	Carta* pedirCarta();
 	void volteaSegunda();
 };
 
