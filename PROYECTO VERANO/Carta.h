@@ -2,19 +2,33 @@
 #define CARTA_H
 #include <iostream>
 
-struct Carta {
-	int valor;
-	char palo;
-	char tipo;
-	bool bocaAbajo;
-	bool color;
+class Carta
+{
+private:
+    int valor;
+    char palo;
+    bool color;
+    char tipo;
+    bool bocaAbajo;
 
-	Carta();
-	~Carta();
-	int getValor();
-	int getPalo();
-	void voltear();
+public:
+    Carta();
+    ~Carta();
 
+    int getValor() const;
+    int getPalo() const;
+    bool getBocaAbajo() const;
+
+    void setValor(int);
+    void setPalo(int);
+    void setColor(bool);
+    void setBocaAbajo(bool);
+    void setTipo(char);
+
+    void voltear();
+    void mostrar() const;
+    
 };
+
 
 #endif

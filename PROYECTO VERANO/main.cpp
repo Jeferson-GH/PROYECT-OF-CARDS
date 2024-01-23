@@ -20,7 +20,7 @@ int main() {
 		std::cin >> cantidadJugadores;
 		Jugador aux;
 		for (int i = 0;i < cantidadJugadores;i++) {
-			std::cout << "Nickname Jugador [" << i << "]: ";
+			std::cout << "Nickname Jugador [" << i + 1 << "]: ";
 			std::cin >> nickname;
 		}
 		Mazo mazo1;
@@ -28,7 +28,7 @@ int main() {
 		mazo1.barajar();
 		mazo1.mostrar();
 		Carta* p = mazo1.tomarCarta();
-		std::cout << "\n\nMazo sin " << p->valor << ' ' << p->valor << '\n';
+		std::cout << "\n\nMazo sin " << p->getPalo() << ' ' << p->getValor() << '\n';
 		mazo1.mostrar();
 	}
 
