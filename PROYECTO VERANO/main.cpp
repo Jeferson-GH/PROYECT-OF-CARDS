@@ -27,6 +27,9 @@ int main() {
 		mazo1.inicializar();
 		mazo1.barajar();
 		mazo1.mostrar();
+		Carta* p = mazo1.tomarCarta();
+		std::cout << "\n\nMazo sin " << p->valor << ' ' << p->valor << '\n';
+		mazo1.mostrar();
 	}
 
 	return 0;

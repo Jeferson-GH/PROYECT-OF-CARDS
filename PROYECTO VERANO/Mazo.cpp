@@ -26,23 +26,10 @@ void Mazo::inicializar()
 
 			//Asigna tipo de carta y ajusta valor correspondiente
 			switch (carta[i * 13 + j].valor) {
-			case 1:
-				carta[i * 13 + j].tipo = 'A'; 
-				break;
-
-			case 11:
-				carta[i * 13 + j].tipo = 'J'; 
-				carta[i * 13 + j].valor -= 1;
-				break;
-				
-			case 12:
-				carta[i * 13 + j].tipo = 'Q'; 
-				carta[i * 13 + j].valor -= 2; 
-				break;
-			case 13:
-				carta[i * 13 + j].tipo = 'K'; 
-				carta[i * 13 + j].valor -= 3;
-				break;
+				case 1: carta[i * 13 + j].tipo = 'A'; break;
+				case 11: carta[i * 13 + j].tipo = 'J'; carta[i * 13 + j].valor -= 1; break;
+				case 12: carta[i * 13 + j].tipo = 'Q'; carta[i * 13 + j].valor -= 2; break;
+				case 13: carta[i * 13 + j].tipo = 'K'; carta[i * 13 + j].valor -= 3; break;
 			}
 		}
 	}
@@ -52,9 +39,9 @@ void Mazo::barajar()
 {
 	std::random_device dev;
 	std::mt19937 rng(dev());
-	std::uniform_int_distribution<std::mt19937::result_type> aleatorio(0, 52);
+	std::uniform_int_distribution<std::mt19937::result_type> aleatorio(0, 51);
 
-	for (int i = 0;i < 52;i++) {
+	for (int i = 0;i < cant;i++) {
 		int aux = aleatorio(rng);
 		Carta tmp = carta[i];
 		carta[i] = carta[aux];
@@ -69,7 +56,7 @@ Carta* Mazo::tomarCarta()
 }
 
 void Mazo::mostrar() {
-	for (int i = 0;i < 52;i++) {
+	for (int i = 0;i < cant;i++) {
 
 		std::cout << "[";
 		if (carta[i].color)
