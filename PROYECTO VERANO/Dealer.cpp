@@ -4,8 +4,9 @@ Dealer::Dealer()
 {
 }
 
-Dealer::~Dealer()
+Carta* Dealer::pedirCarta()
 {
+	return nullptr;
 }
 
 void Dealer::volteaSegunda()

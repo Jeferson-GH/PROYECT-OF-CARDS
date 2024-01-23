@@ -8,9 +8,7 @@ protected:
 	Mano* mano;
 public:
 	JugadorGenerico();
-	JugadorGenerico(std::string, Mano*);
-	~JugadorGenerico();
-	Carta* pedirCarta();
+	virtual Carta* pedirCarta() = 0;
 	bool sePaso();
 };
 

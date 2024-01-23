@@ -23,7 +23,10 @@ int main() {
 			std::cout << "Nickname Jugador [" << i << "]: ";
 			std::cin >> nickname;
 		}
-
+		Mazo mazo1;
+		mazo1.inicializar();
+		mazo1.barajar();
+		mazo1.mostrar();
 	}
 
 	return 0;

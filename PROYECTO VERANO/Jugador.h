@@ -4,8 +4,9 @@
 
 class Jugador : public JugadorGenerico {
 public: 
+	Jugador();
 	Jugador(std::string);
-	~Jugador();
+	virtual Carta* pedirCarta();
 };
 
 #endif

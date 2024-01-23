@@ -1,11 +1,18 @@
 #include "Jugador.h"
 
-Jugador::Jugador(std::string nombre) : JugadorGenerico(nombre)
+Jugador::Jugador(): JugadorGenerico()
 {
+	nickname = "";
 	mano = nullptr;
 }
 
-Jugador::~Jugador()
+Jugador::Jugador(std::string nombre) : JugadorGenerico()
 {
-	delete mano;
+	nickname = nombre;
+	mano = nullptr;
+}
+
+Carta* Jugador::pedirCarta()
+{
+	return nullptr;
 }

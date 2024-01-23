@@ -2,12 +2,13 @@
 #define CARTA_H
 #include <iostream>
 
-class Carta {
-private:
+struct Carta {
 	int valor;
-	int palo;
+	char palo;
+	char tipo;
 	bool bocaAbajo;
-public:
+	bool color;
+
 	Carta();
 	~Carta();
 	int getValor();

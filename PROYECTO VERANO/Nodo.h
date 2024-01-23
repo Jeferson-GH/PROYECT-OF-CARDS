@@ -5,7 +5,7 @@
 
 struct Nodo {
 	Nodo* next;
-	JugadorGenerico dato;
+	JugadorGenerico* dato;
 };
 
 #endif

@@ -1,11 +1,12 @@
 #include "Lista.h"
 
-Lista::Lista()
+Lista::Lista(): inicio{nullptr} 
 {
 }
 
 Lista::~Lista()
 {
+	delete inicio;
 }
 
 Nodo* Lista::getInicio()

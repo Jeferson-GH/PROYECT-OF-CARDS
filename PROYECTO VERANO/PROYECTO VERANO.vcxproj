@@ -139,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Carta.h" />
+    <ClInclude Include="color.h" />
     <ClInclude Include="Dealer.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugador.h" />
