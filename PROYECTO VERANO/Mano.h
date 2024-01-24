@@ -1,16 +1,18 @@
 #ifndef MANO_H
 #define MANO_H
-#include "Mazo.h"
+#include "NodoMano.h"
 
 class Mano {
 private:
-	Carta* carta;
+	NodoMano* inicio;
+	int cant;
 public:
 	Mano();
 	~Mano();
-	void agregarCarta(Mazo*);
+	void agregarCarta(Carta* c);
 	void limpiar();
 	int getPuntos();
+	std::string mostrar();
 
 };
 

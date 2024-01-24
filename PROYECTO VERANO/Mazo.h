@@ -12,7 +12,7 @@ public:
 	void inicializar();
 	void barajar();
 	Carta* tomarCarta();
-	void mostrar();
+	std::string mostrar();
 
 };
 #endif

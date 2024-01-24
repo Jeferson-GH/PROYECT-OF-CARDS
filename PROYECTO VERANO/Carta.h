@@ -16,17 +16,16 @@ public:
     ~Carta();
 
     int getValor() const;
-    int getPalo() const;
+    char getPalo() const;
     bool getBocaAbajo() const;
 
     void setValor(int);
     void setPalo(int);
-    void setColor(bool);
     void setBocaAbajo(bool);
     void setTipo(char);
 
     void voltear();
-    void mostrar() const;
+    std::string mostrar() const;
     
 };
 

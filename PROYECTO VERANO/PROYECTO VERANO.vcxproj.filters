@@ -71,7 +71,7 @@
     <ClInclude Include="Jugador.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="color.h">
+    <ClInclude Include="NodoMano.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

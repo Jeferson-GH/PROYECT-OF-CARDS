@@ -1,6 +1,6 @@
 #include "Mazo.h"
 #include <random>
-#include "color.h"
+#include <sstream>
 
 Mazo::Mazo() : cant{ 52 }
 {
@@ -12,7 +12,7 @@ Mazo::Mazo() : cant{ 52 }
 
 Mazo::~Mazo()
 {
-    for (int i = 0; i < 52; i++) {
+    for (int i = 0; i < cant; i++) {
         delete carta[i]; // Libera la memoria de cada Carta individual
     }
     delete[] carta; 
@@ -27,9 +27,7 @@ void Mazo::inicializar()
             carta[i * 13 + j]->setValor(j + 1);
             carta[i * 13 + j]->setPalo(i + 3);
             carta[i * 13 + j]->setTipo('N'); // Carta normal
-
-            if (carta[i * 13 + j]->getPalo() == 3 || carta[i * 13 + j]->getPalo() == 4) // Asigna color dependiendo del palo
-                carta[i * 13 + j]->setColor(true);
+            carta[i * 13 + j]->setBocaAbajo(false);
 
             // Asigna tipo de carta y ajusta valor correspondiente
             switch (carta[i * 13 + j]->getValor()) {
@@ -57,14 +55,17 @@ void Mazo::barajar()
 	}
 }
 
-Carta* Mazo::tomarCarta()
+Carta* Mazo::tomarCarta() //Se extrae una carta del mazo y se resta la cantidad
 {
 	cant--;
 	return carta[cant];
 }
 
-void Mazo::mostrar() {
+std::string Mazo::mostrar() //Muestra todas las cartas del mazo
+{
+    std::stringstream s;
 	for (int i = 0;i < cant;i++) {
-		carta[i]->mostrar();
+		s << carta[i]->mostrar();
 	}
+    return s.str();
 }

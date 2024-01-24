@@ -26,10 +26,13 @@ int main() {
 		Mazo mazo1;
 		mazo1.inicializar();
 		mazo1.barajar();
-		mazo1.mostrar();
 		Carta* p = mazo1.tomarCarta();
 		std::cout << "\n\nMazo sin " << p->getPalo() << ' ' << p->getValor() << '\n';
-		mazo1.mostrar();
+		std::cout << mazo1.mostrar();
+
+		Mano mano;
+		mano.agregarCarta(p);
+		std::cout << "\nMano: \n" << mano.mostrar();
 	}
 
 	return 0;
