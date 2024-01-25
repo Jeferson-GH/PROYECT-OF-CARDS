@@ -41,7 +41,7 @@ std::string Carta::mostrar() const
     std::stringstream s;
     if (bocaAbajo) //No se muestra si esta boca abajo
     {
-        s << "???" << std::endl;
+        s << "???";
     }
     else 
     { //Muestra el color, palo, y valor de la carta
@@ -49,22 +49,21 @@ std::string Carta::mostrar() const
         switch (tipo)
         {
         case 'A':
-            s << "A " << valor << std::endl;
+            s << "A ";
             break;
         case 'J':
-            s << "J " << valor << std::endl;
+            s << "J ";
             break;
         case 'Q':
-            s << "Q " << valor << std::endl;
+            s << "Q ";
             break;
         case 'K':
-            s << "K " << valor << std::endl;
+            s << "K ";
             break;
         default:
-            s << valor << std::endl;
+            s << valor;
             break;
         }
     }
-
     return s.str();
 }

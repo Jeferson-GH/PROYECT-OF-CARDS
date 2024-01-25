@@ -1,8 +1,6 @@
 #include <iostream>
 #include "Jugador.h"
 
-
-
 int main() {
 	int opcion = 0;
 	int cantidadJugadores;
@@ -28,11 +26,19 @@ int main() {
 		mazo1.barajar();
 		Carta* p = mazo1.tomarCarta();
 		std::cout << "\n\nMazo sin " << p->getPalo() << ' ' << p->getValor() << '\n';
-		std::cout << mazo1.mostrar();
+		std::cout << mazo1.mostrar() << '\n';
 
 		Mano mano;
 		mano.agregarCarta(p);
+		Carta* ptr = mazo1.tomarCarta();
+		mano.agregarCarta(ptr);
+		std::cout << "\n\nMazo sin " << ptr->getPalo() << ' ' << ptr->getValor() << '\n';
+		std::cout << mazo1.mostrar() << '\n';
+	
+		
+
 		std::cout << "\nMano: \n" << mano.mostrar();
+		std::cout << "\nPuntos: " << mano.getPuntos();
 	}
 
 	return 0;

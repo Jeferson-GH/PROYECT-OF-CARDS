@@ -12,5 +12,6 @@ public:
 	void insertar(Nodo*);
 	void borrar(Nodo*);
 	bool listaVacia();
+	void limpiar();
 };
 #endif

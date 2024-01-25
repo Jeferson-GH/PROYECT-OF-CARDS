@@ -27,7 +27,7 @@ void Mano::agregarCarta(Carta* c) //Inserta una carta a la Mano
 	cant++;
 }
 
-void Mano::limpiar()
+void Mano::limpiar() //Limpia la mano actual
 {
 	NodoMano* tmp = inicio;
 	while (tmp != nullptr) {
@@ -40,12 +40,18 @@ void Mano::limpiar()
 	cant = 0;
 }
 
-int Mano::getPuntos()
+int Mano::getPuntos() //Suma los puntos de las cartas en Mano
 {
-	return 0;
+	int suma = 0;
+	NodoMano* tmp = inicio;
+	while (tmp != nullptr) {
+		suma += tmp->carta->getValor();
+		tmp = tmp->next;
+	}
+	return suma;
 }
 
-std::string Mano::mostrar()
+std::string Mano::mostrar() //Muestra la mano
 {
 	std::stringstream s;
 	NodoMano* tmp = inicio;

@@ -65,7 +65,7 @@ std::string Mazo::mostrar() //Muestra todas las cartas del mazo
 {
     std::stringstream s;
 	for (int i = 0;i < cant;i++) {
-		s << carta[i]->mostrar();
+        s << carta[i]->mostrar() << std::endl;
 	}
     return s.str();
 }
