@@ -1,6 +1,6 @@
 #include "Lista.h"
 
-Lista::Lista(): inicio{nullptr} {}
+Lista::Lista(): inicio{ nullptr } {}
 
 Lista::~Lista() 
 {
@@ -14,11 +14,11 @@ Lista::~Lista()
 
 Nodo* Lista::getInicio() { return inicio; }
 
-void Lista::insertar(Nodo* c)
+void Lista::insertar(JugadorGenerico* c)
 {
 	if (inicio == nullptr) { //Si esta vacia, se crea un Nodo
 		inicio = new Nodo;
-		inicio->dato = c->dato;
+		inicio->dato = c;
 		inicio->next = nullptr;
 	}
 	else { //Si hay un elemento, se inserta en la ultima posicion
@@ -27,7 +27,7 @@ void Lista::insertar(Nodo* c)
 			tmp = tmp->next;
 		}
 		tmp->next = new Nodo;
-		tmp->next->dato = c->dato;
+		tmp->next->dato = c;
 		tmp->next->next = nullptr;
 	}
 }

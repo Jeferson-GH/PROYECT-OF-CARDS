@@ -7,7 +7,6 @@ class Carta
 private:
     int valor;
     char palo;
-    bool color;
     char tipo;
     bool bocaAbajo;
 

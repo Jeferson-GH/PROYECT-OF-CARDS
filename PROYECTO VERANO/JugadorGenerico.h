@@ -8,7 +8,7 @@ protected:
 	Mano* mano;
 public:
 	JugadorGenerico();
-	virtual Carta* pedirCarta() = 0;
+	virtual void pedirCarta(Mazo*) = 0;
 	bool sePaso();
 };
 

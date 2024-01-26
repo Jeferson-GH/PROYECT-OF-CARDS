@@ -6,7 +6,7 @@ class Jugador : public JugadorGenerico {
 public: 
 	Jugador();
 	Jugador(std::string);
-	virtual Carta* pedirCarta();
+	virtual void pedirCarta(Mazo*);
 };
 
 #endif

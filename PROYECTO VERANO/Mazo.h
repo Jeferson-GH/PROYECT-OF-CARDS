@@ -13,6 +13,7 @@ public:
 	void barajar();
 	Carta* tomarCarta();
 	std::string mostrar();
+	Carta** getMazo();
 
 };
 #endif

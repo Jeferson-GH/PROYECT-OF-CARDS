@@ -1,5 +1,4 @@
 #include "Carta.h"
-#include <random>
 #include <sstream>
 
 

@@ -69,3 +69,8 @@ std::string Mazo::mostrar() //Muestra todas las cartas del mazo
 	}
     return s.str();
 }
+
+Carta** Mazo::getMazo()
+{
+    return carta;
+}

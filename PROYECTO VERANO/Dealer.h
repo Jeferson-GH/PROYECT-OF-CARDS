@@ -6,7 +6,7 @@ class Dealer : public JugadorGenerico {
 public:
 	Dealer();
 	
-	virtual Carta* pedirCarta();
+	virtual void pedirCarta(Mazo*);
 	void volteaSegunda();
 };
 

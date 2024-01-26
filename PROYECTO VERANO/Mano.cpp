@@ -8,6 +8,17 @@ Mano::~Mano()
 	limpiar(); //Se libera memoria de toda la lista
 }
 
+Carta* Mano::getCarta(int n) //Retorna la carta en la posicion n
+{
+	NodoMano* tmp = inicio;
+	int cont = 0;
+	while (cont != n) { //Recorre la lista hasta llegar a n
+		tmp = tmp->next;
+		cont++;
+	}
+	return tmp->carta;
+}
+
 void Mano::agregarCarta(Carta* c) //Inserta una carta a la Mano
 {
 	if (inicio == nullptr) { //Si esta vacia, se crea un Nodo
@@ -57,7 +68,7 @@ std::string Mano::mostrar() //Muestra la mano
 	NodoMano* tmp = inicio;
 	while (tmp != nullptr) {
 		if (tmp->next != nullptr) {
-			s << tmp->carta->mostrar() << " --> ";
+			s << tmp->carta->mostrar() << " | ";
 		}
 		else {
 			s << tmp->carta->mostrar();

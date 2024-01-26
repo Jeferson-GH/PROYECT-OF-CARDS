@@ -9,7 +9,7 @@ public:
 	Lista();
 	~Lista();
 	Nodo* getInicio();
-	void insertar(Nodo*);
+	void insertar(JugadorGenerico*);
 	void borrar(Nodo*);
 	bool listaVacia();
 	void limpiar();

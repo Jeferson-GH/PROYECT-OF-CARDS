@@ -1,6 +1,7 @@
 #include "Jugador.h"
+#include "Mazo.h"
 
-Jugador::Jugador(): JugadorGenerico()
+Jugador::Jugador() : JugadorGenerico()
 {
 	nickname = "";
 	mano = nullptr;
@@ -12,7 +13,7 @@ Jugador::Jugador(std::string nombre) : JugadorGenerico()
 	mano = nullptr;
 }
 
-Carta* Jugador::pedirCarta()
+void Jugador::pedirCarta(Mazo* m) //Se toma una carta del mazo y se agrega a la mano del jugador
 {
-	return nullptr;
+	mano->agregarCarta(m->tomarCarta());
 }

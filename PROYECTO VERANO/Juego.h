@@ -11,6 +11,8 @@ public:
 	Juego();
 	~Juego();
 	void jugar();
+	void agregarJugador(JugadorGenerico* n);
+	void agregarJugadores();
 };
 
 

@@ -1,11 +1,11 @@
 #include "JugadorGenerico.h"
 
-JugadorGenerico::JugadorGenerico() : nickname{ "" }, mano{ nullptr } {}
+JugadorGenerico::JugadorGenerico() : mano{ nullptr } {}
 
 
 bool JugadorGenerico::sePaso()
 {
-	return false;
+	return mano->getPuntos() > 21;
 }
 
 
