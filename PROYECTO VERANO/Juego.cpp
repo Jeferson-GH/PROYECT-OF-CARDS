@@ -13,7 +13,7 @@ Juego::~Juego()
 
 void Juego::jugar()
 {
-		
+	agregarJugadores();
 }
 void Juego::agregarJugador(JugadorGenerico* n) { listaJugadores.insertar(n); }
 
@@ -43,8 +43,7 @@ void Juego::agregarJugadores() //Agrega jugadores a la lista de juego.
 					nicknameRepetido = std::find(listaNicknames.begin(), listaNicknames.end(), nickname) != listaNicknames.end();
 
 					if (nicknameRepetido) {
-						std::cout << "El nickname ya está en uso. Por favor, elija otro.";
-						std::cin >> nickname;
+						std::cout << "El nickname ya esta en uso. Por favor, elija otro.\n";
 					}
 
 				} while (nicknameRepetido);
@@ -61,7 +60,4 @@ void Juego::agregarJugadores() //Agrega jugadores a la lista de juego.
 		}
 		system("CLS");
 	} while (repetir);
-
-
-
 }
