@@ -1,7 +1,9 @@
 #include "Juego.h"
 #include "Jugador.h"
+#include <sstream>
 #include <vector>
 #include <algorithm> //Para utilizar la funcion std::find()
+#include "Mano.h"
 
 Juego::Juego()
 {
@@ -13,9 +15,15 @@ Juego::~Juego()
 
 void Juego::jugar()
 {
-	agregarJugadores();
+	agregarJugadores(); //Se agregan los jugadores al juego
+
+	Mazo mazo;
+	mazo.inicializar(); 
+	mazo.barajar(); //Se inicializa el mazo y se baraja 
+
+
 }
-void Juego::agregarJugador(JugadorGenerico* n) { listaJugadores.insertar(n); }
+void Juego::agregarJugador(JugadorGenerico* n) { listaJugadores->insertar(n); }
 
 void Juego::agregarJugadores() //Agrega jugadores a la lista de juego.
 { 
@@ -50,7 +58,7 @@ void Juego::agregarJugadores() //Agrega jugadores a la lista de juego.
 				//Posteriormente se agrega el nickname a la listaNickname y se agrega el jugador a la lista de jugadores
 				Jugador* jugador = new Jugador(nickname);
 				listaNicknames.push_back(nickname);
-				listaJugadores.insertar(jugador);
+				listaJugadores->insertar(jugador);
 			}
 			repetir = false; //Sale del ciclo una vez que los jugadores sean ingresados correctamente
 		}
@@ -59,5 +67,9 @@ void Juego::agregarJugadores() //Agrega jugadores a la lista de juego.
 			system("PAUSE");
 		}
 		system("CLS");
+
 	} while (repetir);
+
 }
+
+

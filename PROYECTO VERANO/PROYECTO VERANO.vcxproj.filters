@@ -13,66 +13,84 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de encabezado\Jugadores">
+      <UniqueIdentifier>{20181475-775d-46e2-b3e9-7ab55f70bd95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Cartas">
+      <UniqueIdentifier>{384c7af9-05b6-437d-b944-f18389611a56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Juego">
+      <UniqueIdentifier>{37829be7-55b7-4c7e-98ff-2e631049c44a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Jugadores">
+      <UniqueIdentifier>{6cc25651-62a7-485f-955d-0658b49b2b3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Cartas">
+      <UniqueIdentifier>{a316e698-e824-48f7-adbd-eb73b8f9ff08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Juego">
+      <UniqueIdentifier>{9246485a-cca5-48d0-aca7-d6706c5ec138}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="JugadorGenerico.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="Jugador.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Jugadores</Filter>
+    </ClCompile>
+    <ClCompile Include="JugadorGenerico.cpp">
+      <Filter>Archivos de origen\Jugadores</Filter>
     </ClCompile>
     <ClCompile Include="Dealer.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Jugadores</Filter>
     </ClCompile>
     <ClCompile Include="Carta.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Juego.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Cartas</Filter>
     </ClCompile>
     <ClCompile Include="Mazo.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Cartas</Filter>
     </ClCompile>
     <ClCompile Include="Mano.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Cartas</Filter>
+    </ClCompile>
+    <ClCompile Include="Juego.cpp">
+      <Filter>Archivos de origen\Juego</Filter>
     </ClCompile>
     <ClCompile Include="Lista.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Juego</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JugadorGenerico.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="Carta.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="Dealer.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="Nodo.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="Mano.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="Mazo.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="Lista.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="Juego.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Jugadores</Filter>
     </ClInclude>
     <ClInclude Include="Jugador.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Jugadores</Filter>
+    </ClInclude>
+    <ClInclude Include="Dealer.h">
+      <Filter>Archivos de encabezado\Jugadores</Filter>
+    </ClInclude>
+    <ClInclude Include="Mano.h">
+      <Filter>Archivos de encabezado\Cartas</Filter>
+    </ClInclude>
+    <ClInclude Include="Mazo.h">
+      <Filter>Archivos de encabezado\Cartas</Filter>
+    </ClInclude>
+    <ClInclude Include="Carta.h">
+      <Filter>Archivos de encabezado\Cartas</Filter>
     </ClInclude>
     <ClInclude Include="NodoMano.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Cartas</Filter>
+    </ClInclude>
+    <ClInclude Include="Juego.h">
+      <Filter>Archivos de encabezado\Juego</Filter>
+    </ClInclude>
+    <ClInclude Include="Lista.h">
+      <Filter>Archivos de encabezado\Juego</Filter>
+    </ClInclude>
+    <ClInclude Include="Nodo.h">
+      <Filter>Archivos de encabezado\Juego</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
