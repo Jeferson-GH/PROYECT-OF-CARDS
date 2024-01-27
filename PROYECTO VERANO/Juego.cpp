@@ -5,14 +5,15 @@
 #include <algorithm> //Para utilizar la funcion std::find()
 #include "Mano.h"
 
-Juego::Juego()
-{
-}
-
+Juego::Juego() : baraja{ nullptr }, dealer{ nullptr }, jugadorActual{ nullptr }, listaJugadores{ nullptr } {}
 Juego::~Juego()
 {
+	delete baraja;
+	delete dealer;
+	delete jugadorActual;
 }
-
+void Juego::agregarJugador(JugadorGenerico* n) { listaJugadores->insertar(n); }
+void Juego::eliminarJugador(std::string n) { listaJugadores->borrar(n); }
 void Juego::jugar()
 {
 	agregarJugadores(); //Se agregan los jugadores al juego
@@ -21,10 +22,10 @@ void Juego::jugar()
 	mazo.inicializar(); 
 	mazo.barajar(); //Se inicializa el mazo y se baraja 
 
+	jugadorActual = listaJugadores->getInicio(); //Se establece el primer jugador
+
 
 }
-void Juego::agregarJugador(JugadorGenerico* n) { listaJugadores->insertar(n); }
-
 void Juego::agregarJugadores() //Agrega jugadores a la lista de juego.
 { 
 
@@ -47,7 +48,7 @@ void Juego::agregarJugadores() //Agrega jugadores a la lista de juego.
 					std::cout << "Nickname Jugador [" << i + 1 << "]: ";
 					std::cin >> nickname;
 
-					//Se confirma si el nickname esta repetido en la lista
+					//Confirma si el nickname esta repetido en la lista
 					nicknameRepetido = std::find(listaNicknames.begin(), listaNicknames.end(), nickname) != listaNicknames.end();
 
 					if (nicknameRepetido) {
@@ -72,4 +73,40 @@ void Juego::agregarJugadores() //Agrega jugadores a la lista de juego.
 
 }
 
+bool Juego::pasarTurno() //Se pasa el turno en caso que la lista no se haya acabado
+{
+	if (jugadorActual->next == nullptr) { 
+		return 0; 
+	}
+	jugadorActual = jugadorActual->next;
+	return 1; //Indica si se hizo el cambio
+}
 
+int Juego::jugada(char n) //Retorna un numero dependiendo de la jugada 
+{
+	if ((n == 'D') or (n == 'd')) { //Le da una carta al jugador
+		jugadorActual->dato->pedirCarta(baraja);
+		return 1;
+	}
+	if ((n == 'P') or (n == 'p')) { //Se pasa el turno
+		if (pasarTurno()) {
+			return 2;
+		}
+		return 3; //Retorna 3 si no se paso
+	}
+	if ((n == 'G') or (n == 'g')) { //Se guarda la partida
+		return 4;
+	}
+
+	if ((n == 'S') || (n == 's')) { //Salir del juego
+		return 5;
+	}
+	return 0; //Retorna valor default
+}
+
+bool Juego::pierde() //Determina si el jugador se pasa de 21
+{ 
+	if (jugadorActual->dato->sePaso())
+		return true; 
+	return false;
+}

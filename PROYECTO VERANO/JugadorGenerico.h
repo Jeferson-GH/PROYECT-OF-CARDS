@@ -10,11 +10,12 @@ public:
 	JugadorGenerico();
 	virtual ~JugadorGenerico() = 0;
 	int getPuntos();
+	Mano* getMano();
 	void pedirCarta(Mazo*);
 	bool sePaso();
 	std::string mostrarMano();
 	std::string getNickname();
-	Mano* getMano();
+	
 };
 
 

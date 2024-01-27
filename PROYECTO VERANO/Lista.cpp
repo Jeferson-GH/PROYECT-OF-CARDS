@@ -14,6 +14,20 @@ Lista::~Lista()
 
 Nodo* Lista::getInicio() { return inicio; }
 
+Nodo* Lista::getJugador(std::string n)
+{
+	if (!listaVacia()) {
+		Nodo* tmp = inicio;
+		while (tmp != nullptr) {
+			if (tmp->dato->getNickname() == n) {
+				return tmp;
+			}
+			tmp = tmp->next;
+		}
+	}
+	return nullptr;
+}
+
 void Lista::insertar(JugadorGenerico* c)
 {
 	if (inicio == nullptr) { //Si esta vacia, se crea un Nodo
@@ -42,23 +56,25 @@ void Lista::limpiar()
 		tmp = tmp2;
 	}
 }
-void Lista::borrar(Nodo* elim)
+void Lista::borrar(std::string elim)
 {
 	if (!listaVacia()) {
-		Nodo* tmp = inicio;
-		Nodo* eliminar = elim;
-		if (eliminar == inicio) {
-			inicio = inicio->next;
-			delete eliminar;
-		}
-		else {
-			Nodo* anterior = nullptr;
-			while (tmp != eliminar) {
-				anterior = tmp;
-				tmp = tmp->next;
+		Nodo* eliminar = getJugador(elim);
+		if (eliminar != nullptr) {
+			Nodo* tmp = inicio;
+			if (eliminar->dato == inicio->dato) {
+				inicio = inicio->next;
+				delete tmp;
 			}
-			anterior->next = eliminar->next;
-			delete eliminar;
+			else {
+				Nodo* anterior = nullptr;
+				while (tmp != eliminar) {
+					anterior = tmp;
+					tmp = tmp->next;
+				}
+				anterior->next = eliminar->next;
+				delete eliminar;
+			}
 		}
 	}
 }

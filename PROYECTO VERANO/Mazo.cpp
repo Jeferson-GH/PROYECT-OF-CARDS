@@ -47,7 +47,7 @@ void Mazo::barajar()
 	std::mt19937 rng(dev());
 	std::uniform_int_distribution<std::mt19937::result_type> aleatorio(0, 51);
 
-	for (int i = 0;i < cant;i++) { //Intercambiar posiciones aleatoriamente
+	for (int i = 0;i < cant;i++) { //Intercambia posiciones aleatoriamente
 		int aux = aleatorio(rng);
 		Carta* tmp = carta[i];
 		carta[i] = carta[aux];

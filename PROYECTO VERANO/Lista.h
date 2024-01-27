@@ -9,9 +9,11 @@ public:
 	Lista();
 	~Lista();
 	Nodo* getInicio();
+	Nodo* getJugador(std::string);
 	void insertar(JugadorGenerico*);
-	void borrar(Nodo*);
+	void borrar(std::string);
 	bool listaVacia();
 	void limpiar();
+
 };
 #endif

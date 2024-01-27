@@ -15,12 +15,12 @@ public:
 	~Juego();
 	void jugar();
 	void agregarJugador(JugadorGenerico* n);
-	void eliminarJugador(std::string n);
+	void eliminarJugador(std::string);
 	bool pasarTurno();
-
-
+	int jugada(char);
 	void agregarJugadores();
 	void mostrarJuego();
+	bool pierde();
 };
 
 
