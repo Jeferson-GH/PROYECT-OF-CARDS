@@ -14,8 +14,7 @@ Juego::~Juego()
 }
 void Juego::agregarJugador(JugadorGenerico* n) { listaJugadores->insertar(n); }
 void Juego::eliminarJugador(std::string n) { listaJugadores->borrar(n); }
-void Juego::jugar()
-{
+void Juego::jugar(){
 	agregarJugadores(); //Se agregan los jugadores al juego
 
 	Mazo mazo;

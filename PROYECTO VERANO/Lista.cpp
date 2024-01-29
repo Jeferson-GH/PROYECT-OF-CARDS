@@ -72,8 +72,10 @@ void Lista::borrar(std::string elim)
 					anterior = tmp;
 					tmp = tmp->next;
 				}
-				anterior->next = eliminar->next;
-				delete eliminar;
+				if (anterior != nullptr) {
+					anterior->next = eliminar->next;
+					delete eliminar;
+				}
 			}
 		}
 	}
