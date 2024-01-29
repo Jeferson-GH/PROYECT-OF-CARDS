@@ -11,7 +11,7 @@ public:
 	virtual ~JugadorGenerico() = 0;
 	int getPuntos();
 	Mano* getMano();
-	virtual void pedirCarta(Mazo*) = 0;
+	 void pedirCarta(Mazo*) ;
 	bool sePaso();
 	std::string mostrarMano();
 	std::string getNickname();
