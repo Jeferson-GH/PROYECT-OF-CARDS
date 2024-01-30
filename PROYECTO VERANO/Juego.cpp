@@ -5,12 +5,13 @@
 #include <algorithm> //Para utilizar la funcion std::find()
 #include "Mano.h"
 
-Juego::Juego() : baraja{ nullptr }, dealer{ nullptr }, jugadorActual{ nullptr }, listaJugadores{ nullptr } {}
+Juego::Juego() : baraja{ nullptr }, dealer{ nullptr }, jugadorActual{ nullptr }, listaJugadores { new Lista } {}
 Juego::~Juego()
 {
 	delete baraja;
 	delete dealer;
 	delete jugadorActual;
+	
 }
 void Juego::agregarJugador(JugadorGenerico* n) { listaJugadores->insertar(n); }
 void Juego::eliminarJugador(std::string n) { listaJugadores->borrar(n); }
