@@ -140,24 +140,9 @@ std::string Juego::mostrarJuego()
 
 void Juego::turnoDealer() //Evalua la jugada que tomara el dealer dependiendo de los puntos que tenga
 {
-	std::random_device dev;
-	std::mt19937 rng(dev());
-	std::uniform_int_distribution<std::mt19937::result_type> aleatorio(0, 1);
-
 	if (dealer->getPuntos() < 16) {
 		dealer->pedirCarta(baraja);
 	} 
-	if (dealer->getPuntos() >= 16 and dealer->getPuntos() < 18) {
-		if (aleatorio(rng)) {
-			dealer->pedirCarta(baraja);
-		}
-		else {
-			return;
-		}
-	}
-	if (dealer->getPuntos() >= 18) {
-		return;
-	}
 }
 
 void Juego::partida()
