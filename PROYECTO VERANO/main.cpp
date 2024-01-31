@@ -11,6 +11,6 @@ int main() {
 
 	Juego juego1;
 	juego1.jugar();
-	std::cout << "QUIERO IRME A DORMIR";
+
 	return 0;
 }

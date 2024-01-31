@@ -19,7 +19,8 @@ public:
 	bool pasarTurno();
 	int jugada(char);
 	void agregarJugadores();
-	void mostrarJuego();
+	void repartirCartas();
+	std::string mostrarJuego();
 	bool pierde();
 };
 

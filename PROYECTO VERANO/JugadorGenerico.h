@@ -8,13 +8,14 @@ protected:
 	Mano* mano;
 public:
 	JugadorGenerico();
-	virtual ~JugadorGenerico() = 0;
+	virtual ~JugadorGenerico();
 	int getPuntos();
 	Mano* getMano();
-	 void pedirCarta(Mazo*) ;
-	bool sePaso();
-	std::string mostrarMano();
 	std::string getNickname();
+	void pedirCarta(Mazo*) ;
+	bool sePaso();
+	virtual std::string mostrar() = 0;
+	
 	
 };
 

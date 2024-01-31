@@ -6,6 +6,7 @@ class Jugador : public JugadorGenerico {
 public: 
 	Jugador();
 	Jugador(std::string);
+	virtual std::string mostrar();
 };
 
 #endif

@@ -5,9 +5,8 @@
 class Dealer : public JugadorGenerico {
 public:
 	Dealer();
-	~Dealer();
 	void volteaSegunda();
-	
+	virtual std::string mostrar();
 };
 
 #endif 
