@@ -140,7 +140,7 @@ std::string Juego::mostrarJuego()
 
 void Juego::turnoDealer() //Evalua la jugada que tomara el dealer dependiendo de los puntos que tenga
 {
-	if (dealer->getPuntos() < 16) {
+	if (dealer->getPuntos() <= 16) {
 		dealer->pedirCarta(baraja);
 	} 
 }
