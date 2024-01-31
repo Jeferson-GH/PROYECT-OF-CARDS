@@ -14,14 +14,19 @@ public:
 	Juego();
 	~Juego();
 	void jugar();
+
 	void agregarJugador(JugadorGenerico* n);
 	void eliminarJugador(std::string);
+
 	bool pasarTurno();
 	int jugada(char);
 	void agregarJugadores();
 	void repartirCartas();
 	std::string mostrarJuego();
 	bool pierde();
+	void resultados();
+	void turnoDealer();
+	void partida();
 };
 
 
