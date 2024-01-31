@@ -8,7 +8,7 @@ protected:
 	Mano* mano;
 public:
 	JugadorGenerico();
-	virtual ~JugadorGenerico();
+	~JugadorGenerico();
 	int getPuntos();
 	Mano* getMano();
 	std::string getNickname();
