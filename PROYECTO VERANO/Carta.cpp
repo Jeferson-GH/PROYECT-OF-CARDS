@@ -13,11 +13,11 @@ Carta::Carta()
 
 Carta::~Carta() {}
 
-int Carta::getValor() const { return valor; }
+int Carta::getValor()  { return valor; }
 
-char Carta::getPalo() const { return palo; }
+char Carta::getPalo()  { return palo; }
 
-bool Carta::getBocaAbajo() const { return bocaAbajo; }
+bool Carta::getBocaAbajo()  { return bocaAbajo; }
 
 void Carta::setValor(int nuevoValor) { valor = nuevoValor; }
 

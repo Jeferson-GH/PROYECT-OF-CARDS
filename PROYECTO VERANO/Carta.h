@@ -14,9 +14,9 @@ public:
     Carta();
     ~Carta();
 
-    int getValor() const;
-    char getPalo() const;
-    bool getBocaAbajo() const;
+    int getValor() ;
+    char getPalo() ;
+    bool getBocaAbajo() ;
 
     void setValor(int);
     void setPalo(int);

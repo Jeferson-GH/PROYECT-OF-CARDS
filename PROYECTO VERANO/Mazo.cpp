@@ -20,7 +20,7 @@ Mazo::~Mazo()
 
 void Mazo::inicializar()
 {
-    // 3 corazones, 4 diamante, 5 trebol, 6 espada
+    // 4 palos: corazones, diamantes, tréboles, espadas
     for (int i = 0; i < 4; i++) {
         // Asigna valores del 1 al 13
         for (int j = 0; j < 13; j++) {
@@ -32,9 +32,9 @@ void Mazo::inicializar()
             // Asigna tipo de carta y ajusta valor correspondiente
             switch (carta[i * 13 + j]->getValor()) {
             case 1: carta[i * 13 + j]->setTipo('A'); break;
-            case 11: carta[i * 13 + j]->setTipo('J'); carta[i * 13 + j]->setValor(carta[i * 13 + j]->getValor() - 1); break;
-            case 12: carta[i * 13 + j]->setTipo('Q'); carta[i * 13 + j]->setValor(carta[i * 13 + j]->getValor() - 2); break;
-            case 13: carta[i * 13 + j]->setTipo('K'); carta[i * 13 + j]->setValor(carta[i * 13 + j]->getValor() - 3); break;
+            case 11: carta[i * 13 + j]->setTipo('J'); carta[i * 13 + j]->setValor(10); break;
+            case 12: carta[i * 13 + j]->setTipo('Q'); carta[i * 13 + j]->setValor(10); break;
+            case 13: carta[i * 13 + j]->setTipo('K'); carta[i * 13 + j]->setValor(10); break;
             }
         }
     }

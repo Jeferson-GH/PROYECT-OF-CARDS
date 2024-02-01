@@ -7,8 +7,7 @@
 #include "Mano.h"
 
 Juego::Juego() : baraja{ new Mazo }, dealer{ new Dealer }, jugadorActual{ nullptr }, listaJugadores { new Lista } {}
-Juego::~Juego()
-{
+Juego::~Juego(){
 	delete baraja;
 	delete dealer;
 	delete listaJugadores;
