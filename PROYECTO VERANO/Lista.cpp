@@ -2,15 +2,7 @@
 
 Lista::Lista(): inicio{ nullptr } {}
 
-Lista::~Lista() 
-{
-	Nodo* tmp;
-	while (inicio != nullptr) {
-		tmp = inicio;
-		inicio = inicio->next;
-		delete tmp;
-	}
-}
+Lista::~Lista() { limpiar(); }
 
 Nodo* Lista::getInicio() { return inicio; }
 
@@ -48,12 +40,11 @@ void Lista::insertar(JugadorGenerico* c)
 
 void Lista::limpiar()
 {
-	Nodo* tmp = inicio;
-	while (tmp != nullptr) {
-		Nodo* tmp2 = tmp->next;
-		delete tmp->dato; // Libera la memoria de la carta individual
-		delete tmp; // Libera la memoria del nodo actual
-		tmp = tmp2;
+	Nodo* tmp;
+	while (inicio != nullptr) {
+		tmp = inicio;
+		inicio = inicio->next;
+		delete tmp;
 	}
 }
 void Lista::borrar(std::string elim)

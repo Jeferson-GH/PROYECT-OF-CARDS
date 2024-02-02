@@ -18,6 +18,7 @@ std::string Jugador::mostrar()
 	std::stringstream s;
 	s << "Jugador '" << nickname << "':" << '\n';
 	s << mano->mostrar() << '\n' << '\n';
+	s << "Puntos: " << getPuntos() << '\n' << '\n';
 	return s.str();
 }
 

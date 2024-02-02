@@ -11,6 +11,7 @@ public:
 	Carta* getCarta(int pos);
 	Carta* getAS();
 	int getPuntos();
+	bool hayAS();
 	void agregarCarta(Carta* c);
 	void limpiar();
 	std::string mostrar();
