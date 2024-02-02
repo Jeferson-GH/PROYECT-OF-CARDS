@@ -1,36 +1,36 @@
 #include <sstream>
 #include <vector> 
 #include <algorithm> //Para utilizar la funcion std::find()
-#include <random>
 #include "Juego.h"
 #include "Jugador.h"
 #include "Mano.h"
 
 Juego::Juego() : baraja{ new Mazo }, dealer{ new Dealer }, jugadorActual{ nullptr }, listaJugadores { new Lista } {}
-Juego::~Juego(){
-	delete baraja;
-	delete dealer;
-	delete listaJugadores;
-	
-}
+
+Juego::~Juego() { delete baraja; delete dealer;	delete listaJugadores; }
+
 void Juego::agregarJugador(JugadorGenerico* n) { listaJugadores->insertar(n); }
+
 void Juego::eliminarJugador(std::string n) { listaJugadores->borrar(n); }
 
 void Juego::jugar()
 {
 	agregarJugadores(); //Se agregan los jugadores al juego
+	
+	baraja->inicializar(); //Se inicializa el mazo 
 
+	baraja->barajar(); //Se barajan las cartas 
 
-	baraja->inicializar(); 
-	baraja->barajar(); //Se inicializa el mazo y se baraja 
-	repartirCartas(); //Se reparten las cartas automaticamente 
+	repartirCartas(); //Se reparten las cartas automaticamente a cada jugador
 
-	partida();
+	partida(); //Se muestra el flujo de la partida
 
-	turnoDealer();
-	resultados();
+	turnoDealer(); //El dealer escoge su jugada 
+
+	resultados(); //Se muestran los ganadores y perdedores
 
 }
+
 void Juego::agregarJugadores() //Agrega jugadores a la lista de juego.
 { 
 
@@ -138,10 +138,30 @@ std::string Juego::mostrarJuego()
 }
 
 void Juego::turnoDealer() //Evalua la jugada que tomara el dealer dependiendo de los puntos que tenga
-{
-	if (dealer->getPuntos() <= 16) {
-		dealer->pedirCarta(baraja);
-	} 
+{	
+	bool repetir = true;
+	system("cls");
+	std::cout << "\t Turno del dealer: \n\n" << dealer->mostrar();
+	std::cout << "Presione cualquier tecla para saber su carta oculta \n\n";
+	system("pause");
+	system("cls");
+	dealer->volteaSegunda();
+	while (repetir) {
+		std::cout << dealer->mostrar();
+		system("pause");
+		system("cls");
+		if (dealer->getPuntos() < 16) {
+			std::cout << "El dealer toma una carta\n\n";
+			dealer->pedirCarta(baraja);
+		}
+		else {
+			std::cout << "El dealer decide plantarse\n";
+			repetir = false;
+		}
+	}
+	std::cout << "Culmina el turno del dealer, presione cualquier tecla para ver los resultados\n\n";
+	system("pause");
+	system("cls");
 }
 
 void Juego::partida()
@@ -157,8 +177,7 @@ void Juego::partida()
 			std::cout << mostrarJuego();
 			if (pierde()) { //En el caso que pierda el jugador actual:
 				std::string nom = jugadorActual->dato->getNickname();
-				if (pasarTurno()) { //Se elimina al jugador y se pasa de turno
-					eliminarJugador(nom);
+				if (pasarTurno()) { //Se pasa de turno
 					system("cls");
 					std::cout << '\n' << nom << " perdio, pasando al siguiente turno\n\n";
 					system("pause");
@@ -190,15 +209,20 @@ void Juego::resultados()
 	else {
 		std::cout << "Dealer termina el juego con " << dealer->getPuntos() << " puntos en mano\n";
 		do {
-			if (jugadorActual->dato->getPuntos() > dealer->getPuntos()) {
-				std::cout << " '" << jugadorActual->dato->getNickname() << "' gano con " << jugadorActual->dato->getPuntos() << " en mano\n";
-			}
-			if (jugadorActual->dato->getPuntos() < dealer->getPuntos()) {
-				std::cout << " '" << jugadorActual->dato->getNickname() << "' perdio con " << jugadorActual->dato->getPuntos() << " en mano\n";
-			}
-			if (jugadorActual->dato->getPuntos() == dealer->getPuntos()) {
-				std::cout << " '" << jugadorActual->dato->getNickname() << "' empato con " << jugadorActual->dato->getPuntos() << " en mano\n";
+			if (!jugadorActual->dato->sePaso()) {
+				if (jugadorActual->dato->getPuntos() > dealer->getPuntos()) {
+					std::cout << " '" << jugadorActual->dato->getNickname() << "' gano con " << jugadorActual->dato->getPuntos() << " en mano\n";
+				}
+				if (jugadorActual->dato->getPuntos() == dealer->getPuntos()) {
+					std::cout << " '" << jugadorActual->dato->getNickname() << "' empato con " << jugadorActual->dato->getPuntos() << " en mano\n";
 
+				}
+				if (jugadorActual->dato->getPuntos() < dealer->getPuntos()) {
+					std::cout << " '" << jugadorActual->dato->getNickname() << "' perdio con " << jugadorActual->dato->getPuntos() << " en mano\n";
+				}
+			}
+			else {
+				std::cout << " '" << jugadorActual->dato->getNickname() << "' se paso con " << jugadorActual->dato->getPuntos() << " en mano\n";
 			}
 		} while (pasarTurno() and jugadorActual->dato!=dealer);
 	}

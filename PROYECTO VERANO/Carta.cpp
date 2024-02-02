@@ -2,20 +2,15 @@
 #include <sstream>
 
 
-Carta::Carta()
-{
-	valor = 0;
-	palo = 0;
-	tipo = ' ';
-	bocaAbajo = true;
-}
-//Metodos simples
+Carta::Carta() : valor{ 0 }, palo(0), tipo{ ' ' }, bocaAbajo{ true } {}
 
 Carta::~Carta() {}
 
 int Carta::getValor()  { return valor; }
 
 char Carta::getPalo()  { return palo; }
+
+char Carta::getTipo() { return tipo; }
 
 bool Carta::getBocaAbajo()  { return bocaAbajo; }
 

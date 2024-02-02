@@ -15,7 +15,7 @@ public:
 	void pedirCarta(Mazo*) ;
 	bool sePaso();
 	virtual std::string mostrar() = 0;
-	
+	void cambiarValorAS();
 	
 };
 

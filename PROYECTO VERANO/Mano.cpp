@@ -2,7 +2,7 @@
 #include "sstream"
 
 //Constructor y destructor
-Mano::Mano(): inicio{ nullptr }, cant {0} {}
+Mano::Mano(): inicio{ nullptr } {}
 Mano::~Mano()
 {
 	limpiar(); //Se libera memoria de toda la lista
@@ -17,6 +17,17 @@ Carta* Mano::getCarta(int n) //Retorna la carta en la posicion n
 		cont++;
 	}
 	return tmp->carta;
+}
+
+Carta* Mano::getAS()
+{
+	NodoMano* tmp = inicio;
+	while (tmp != nullptr) {
+		if (tmp->carta->getTipo() == 'A')
+			return tmp->carta;
+		tmp = tmp->next;
+	}
+	return nullptr;
 }
 
 void Mano::agregarCarta(Carta* c) //Inserta una carta a la Mano
@@ -35,7 +46,6 @@ void Mano::agregarCarta(Carta* c) //Inserta una carta a la Mano
 		tmp->next->carta = c;
 		tmp->next->next = nullptr;
 	}
-	cant++;
 }
 
 void Mano::limpiar() //Limpia la mano actual
@@ -48,7 +58,6 @@ void Mano::limpiar() //Limpia la mano actual
 		tmp = tmp2;
 	}
 	inicio = nullptr;
-	cant = 0;
 }
 
 int Mano::getPuntos() //Suma los puntos de las cartas en Mano

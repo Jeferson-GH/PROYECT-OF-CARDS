@@ -5,14 +5,14 @@
 class Mano {
 private:
 	NodoMano* inicio;
-	int cant;
 public:
 	Mano();
 	~Mano();
 	Carta* getCarta(int pos);
+	Carta* getAS();
+	int getPuntos();
 	void agregarCarta(Carta* c);
 	void limpiar();
-	int getPuntos();
 	std::string mostrar();
 
 };

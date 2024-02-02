@@ -14,8 +14,9 @@ public:
     Carta();
     ~Carta();
 
-    int getValor() ;
-    char getPalo() ;
+    int getValor();
+    char getPalo();
+    char getTipo();
     bool getBocaAbajo() ;
 
     void setValor(int);
