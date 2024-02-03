@@ -1,3 +1,4 @@
+#include <sstream>
 #include "Lista.h"
 
 Lista::Lista(): inicio{ nullptr } {}
@@ -6,18 +7,48 @@ Lista::~Lista() { limpiar(); }
 
 Nodo* Lista::getInicio() { return inicio; }
 
+bool Lista::listaVacia() { return inicio == nullptr; }
+
 Nodo* Lista::getJugador(std::string n)
 {
 	if (!listaVacia()) {
 		Nodo* tmp = inicio;
-		while (tmp != nullptr) {
+		while (tmp->next != nullptr) {
 			if (tmp->dato->getNickname() == n) {
 				return tmp;
 			}
 			tmp = tmp->next;
 		}
+		if (tmp->dato->getNickname() == n) {
+			return tmp;
+		}
 	}
 	return nullptr;
+}
+
+Nodo* Lista::getJugador(int pos)
+{
+	int c = 0;
+	Nodo* tmp = inicio;
+	while (tmp != nullptr) {
+		if (c == pos) {
+			return tmp;
+		}
+		tmp = tmp->next;
+		c++;
+	}
+	return nullptr;
+}
+
+int Lista::getCantidad()
+{
+	int c = 0;
+	Nodo* tmp = inicio;
+	while (tmp != nullptr) {
+		c++;
+		tmp = tmp->next;
+	}
+	return c;
 }
 
 void Lista::insertar(JugadorGenerico* c)
@@ -47,6 +78,18 @@ void Lista::limpiar()
 		delete tmp;
 	}
 }
+
+std::string Lista::guardarNicknames()
+{
+	std::stringstream s;
+	Nodo* tmp = inicio;
+	while (tmp != nullptr) {
+		s << tmp->dato->getNickname() << '\n';
+		tmp = tmp->next;
+	}
+	return s.str();
+}
+
 void Lista::borrar(std::string elim)
 {
 	if (!listaVacia()) {
@@ -72,4 +115,5 @@ void Lista::borrar(std::string elim)
 	}
 }
 
-bool Lista::listaVacia() { return inicio == nullptr; }
+
+

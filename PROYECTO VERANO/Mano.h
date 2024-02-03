@@ -15,7 +15,8 @@ public:
 	void agregarCarta(Carta* c);
 	void limpiar();
 	std::string mostrar();
-
+	std::string guardarCartas();
+	int getCantidad();
 };
 
 #endif

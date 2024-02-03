@@ -4,10 +4,13 @@
 #include "Juego.h"
 #include "Jugador.h"
 #include "Mano.h"
+#include "Archivo.h"
 
 Juego::Juego() : baraja{ new Mazo }, dealer{ new Dealer }, jugadorActual{ nullptr }, listaJugadores { new Lista } {}
 
 Juego::~Juego() { delete baraja; delete dealer;	delete listaJugadores; }
+
+void Juego::setJugadorActual(std::string nickname) { jugadorActual = listaJugadores->getJugador(nickname); }
 
 void Juego::agregarJugador(JugadorGenerico* n) { listaJugadores->insertar(n); }
 
@@ -36,9 +39,8 @@ void Juego::jugar()
 
 				if (partida()) //Se muestra el flujo de la partida
 				{
-					opcion = 2; 
+					opcion = 0; 
 					system("cls");
-					limpiarPartida();
 					break;
 				}
 
@@ -50,11 +52,19 @@ void Juego::jugar()
 
 				std::cout << "\n1) Jugar de nuevo con los mismos jugadores\n" << "2) Salir\n";
 				std::cin >> opcion;
+				if (opcion == 2)
+					opcion = 0;
 				system("cls");
 			} 
 			limpiarPartida();
 		}
-	} while (opcion == 2);
+		if (opcion == 2) {
+			std::string nombreArchivo;
+			std::cout << "Ingrese el nombre del archivo a cargar: ";
+			std::cin >> nombreArchivo;
+
+		}
+	} while (opcion == 0);
 
 	if (opcion == 3) {
 		system("cls");
@@ -176,12 +186,11 @@ bool Juego::partida()
 	char opcion;
 	int opcionAS;
 	bool repetir = true;
-	bool yaEvaluo = false;
 	while (jugadorActual->dato != dealer) { //Termina el ciclo cuando se llega al dealer
 		std::cout << mostrarJuego() << '\n';
-		if (jugadorActual->dato->getMano()->hayAS() and !yaEvaluo) {
-			yaEvaluo = true;
-			std::cout << "Cambiar AS?\n" << "1) Si\n" << "2) No\n";
+		if (jugadorActual->dato->getMano()->hayAS() and repetir) {
+			repetir = false;
+			std::cout << "\nCambiar AS?\n" << "1) Si\n" << "2) No\n";
 			std::cin >> opcionAS;
 			if (opcionAS == 1) {
 				jugadorActual->dato->cambiarValorAS();
@@ -190,7 +199,6 @@ bool Juego::partida()
 			std::cout << mostrarJuego() << '\n';
 		}
 		std::cin >> opcion;
-
 		switch (opcion) { //Se evalua la jugada
 		case 'd': //Agrega una carta a la mano y vuelve a desplegar en pantalla
 			jugadorActual->dato->pedirCarta(baraja);
@@ -204,15 +212,24 @@ bool Juego::partida()
 			}
 			break;
 		case 'p':
-			pasarTurno();  //Pasa el turno
+			pasarTurno(); //Pasa el turno
 			break;
-		case 'g':
-			break; //Guardar partida
+		case 'g': //Guardar partida
+		{		
+			std::string nombreArchivo;
+			system("cls");
+			std::cout << "Ingrese el nombre con el que quiere guardar la partida: ";
+			std::cin >> nombreArchivo;
+			Archivo archivo(nombreArchivo);
+			nombreArchivo += ".txt";
+			archivo.guardarPartida(listaJugadores, baraja, jugadorActual);
+			return true;
+		}
 		case 's':
 			return true; //Salir del juego 
 		}
 		system("cls");
-		yaEvaluo = false;
+		repetir = true;
 	}
 	return false;
 }

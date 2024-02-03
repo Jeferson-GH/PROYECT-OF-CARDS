@@ -14,6 +14,7 @@ public:
 	Juego();
 	~Juego();
 	void jugar();
+	void setJugadorActual(std::string);
 	void agregarJugador(JugadorGenerico* n);
 	void eliminarJugador(std::string);
 	void pasarTurno();

@@ -17,7 +17,7 @@ public:
     int getValor();
     char getPalo();
     char getTipo();
-    bool getBocaAbajo() ;
+    bool getBocaAbajo();
 
     void setValor(int);
     void setPalo(int);

@@ -60,6 +60,9 @@
     <ClCompile Include="Lista.cpp">
       <Filter>Archivos de origen\Juego</Filter>
     </ClCompile>
+    <ClCompile Include="Archivo.cpp">
+      <Filter>Archivos de origen\Juego</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JugadorGenerico.h">
@@ -90,6 +93,9 @@
       <Filter>Archivos de encabezado\Juego</Filter>
     </ClInclude>
     <ClInclude Include="Nodo.h">
+      <Filter>Archivos de encabezado\Juego</Filter>
+    </ClInclude>
+    <ClInclude Include="Archivo.h">
       <Filter>Archivos de encabezado\Juego</Filter>
     </ClInclude>
   </ItemGroup>

@@ -10,10 +10,13 @@ public:
 	~Lista();
 	Nodo* getInicio();
 	Nodo* getJugador(std::string);
+	Nodo* getJugador(int);
+	int getCantidad();
 	void insertar(JugadorGenerico*);
 	void borrar(std::string);
 	bool listaVacia();
 	void limpiar();
+	std::string guardarNicknames();
 
 };
 #endif

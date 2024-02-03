@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Archivo.cpp" />
     <ClCompile Include="Carta.cpp" />
     <ClCompile Include="Dealer.cpp" />
     <ClCompile Include="Juego.cpp" />
@@ -138,6 +139,7 @@
     <ClCompile Include="Mazo.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Archivo.h" />
     <ClInclude Include="Carta.h" />
     <ClInclude Include="Dealer.h" />
     <ClInclude Include="Juego.h" />

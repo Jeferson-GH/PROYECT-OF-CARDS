@@ -16,7 +16,7 @@ public:
 	bool sePaso();
 	virtual std::string mostrar() = 0;
 	void cambiarValorAS();
-	
+	std::string guardarMano();
 };
 
 
