@@ -29,7 +29,7 @@ void Juego::jugar()
 		if (opcion == 1) {
 			agregarJugadores(); //Se agregan los jugadores al juego
 
-			while (opcion != 2) {
+			while (opcion == 1) {
 
 				baraja->inicializar(); //Se inicializa el mazo 
 
@@ -59,10 +59,45 @@ void Juego::jugar()
 			limpiarPartida();
 		}
 		if (opcion == 2) {
+			opcion = 1;
+			bool repetirPartida = false;
 			std::string nombreArchivo;
 			std::cout << "Ingrese el nombre del archivo a cargar: ";
 			std::cin >> nombreArchivo;
+			Archivo archivo(nombreArchivo);
+			archivo.cargarPartida(nombreArchivo, listaJugadores, dealer, jugadorActual);
+			system("cls");
 
+			while (opcion == 1) {
+
+				baraja->inicializar(); //Se inicializa el mazo 
+
+				baraja->barajar(); //Se barajan las cartas 
+
+				if (repetirPartida)
+					repartirCartas();
+
+				if (partida()) //Se muestra el flujo de la partida
+				{
+					opcion = 0;
+					system("cls");
+					break;
+				}
+
+				turnoDealer(); //El dealer escoge su jugada 
+
+				resultados(); //Se muestran los ganadores y perdedores
+
+				restablecerPartida(); //Se limpian todos los datos de la partida, exceptuando la lista de jugadores
+
+				std::cout << "\n1) Jugar de nuevo con los mismos jugadores\n" << "2) Salir\n";
+				std::cin >> opcion;
+				if (opcion == 2)
+					opcion = 0;
+				system("cls");
+				repetirPartida = true;
+			}
+			limpiarPartida();
 		}
 	} while (opcion == 0);
 
@@ -221,7 +256,7 @@ bool Juego::partida()
 			std::cout << "Ingrese el nombre con el que quiere guardar la partida: ";
 			std::cin >> nombreArchivo;
 			Archivo archivo(nombreArchivo);
-			nombreArchivo += ".txt";
+		//	nombreArchivo += ".txt";
 			archivo.guardarPartida(listaJugadores, baraja, jugadorActual);
 			return true;
 		}
@@ -277,6 +312,7 @@ void Juego::restablecerPartida()
 	dealer = new Dealer;
 	delete baraja;
 	baraja = new Mazo;
+	jugadorActual = listaJugadores->getInicio();
 }
 
 void Juego::limpiarPartida()

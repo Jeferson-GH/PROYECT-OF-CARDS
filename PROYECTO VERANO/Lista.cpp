@@ -83,7 +83,7 @@ std::string Lista::guardarNicknames()
 {
 	std::stringstream s;
 	Nodo* tmp = inicio;
-	while (tmp != nullptr) {
+	while (tmp->next != nullptr) {
 		s << tmp->dato->getNickname() << '\n';
 		tmp = tmp->next;
 	}

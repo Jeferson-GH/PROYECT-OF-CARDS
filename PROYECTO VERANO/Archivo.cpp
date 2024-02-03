@@ -23,43 +23,51 @@ void Archivo::guardarPartida(Lista* lista, Mazo* baraja, Nodo* jugadorActual)
 		archivo << jugadorActual->dato->guardarMano();
 		jugadorActual = jugadorActual->next;
 	}
+	archivo << jugadorActual->dato->getMano()->getCantidad() << '\n';
+	archivo << jugadorActual->dato->guardarMano();
 	archivo << nicknameJugadorActual << '\n';
 	archivo.close();
 }
 
-bool Archivo::cargarPartida(std::string nombreArchivo, Lista* &lista, Mazo* &baraja, Nodo* &jugadorActual)
+bool Archivo::cargarPartida(std::string nombreArchivo, Lista* &lista, Dealer* &dealer, Nodo* &jugadorActual)
 {
 	std::ifstream archivo;
 	archivo.open(nombreArchivo);
 	if (!archivo.is_open())
 		return false;
 	
-	std::string aux;
-	archivo >> aux;
-	int x = std::stoi(aux);
-	for (int i = 0; i < x; i++) {
-		archivo >> aux;
-		lista->insertar(new Jugador(aux));
+	std::string nombres;
+	char tipo;
+	int cantidadJugadores, valores, x;
+	archivo >> cantidadJugadores;
+	for (int i = 1; i < cantidadJugadores; i++) {
+		archivo >> nombres;
+		lista->insertar(new Jugador(nombres));
 	}
-	archivo >> aux;
-	x = std::stoi(aux);
-	for (int i = 0; i < x; i++) {
-		archivo >> aux;
-		Carta* carta = new Carta;
-		int y = std::stoi(aux);
-		carta->setValor(y);
-		y = std::stoi(aux);
-		carta->setPalo(y);
-		archivo >> aux; //Comvertir char cambiando la variable AUX a char en lugar de string
-		//carta->setTipo(aux)
-		//carta->setPalo()
-		archivo >> aux;
-		archivo >> aux;
+	delete dealer;
+	dealer = new Dealer;
+	lista->insertar(dealer);
+	jugadorActual = lista->getInicio();
+	for (int i = 0; i < cantidadJugadores; i++) {
+		archivo >> x;
+		for (int i = 0; i < x; i++) {
+			Carta* carta = new Carta;
+			archivo >> valores;
+			carta->setValor(valores);
+			archivo >> valores;
+			carta->setPalo(valores);
+			archivo >> tipo;
+			carta->setTipo(tipo);
+			archivo >> valores;
+			carta->setBocaAbajo(valores);
 
-		//jugadorActual->dato->getMano()->agregarCarta();
-		jugadorActual = lista->getInicio();
-
+			jugadorActual->dato->getMano()->agregarCarta(carta);
+		}
+		jugadorActual = jugadorActual->next;
 	}
+	archivo >> nombres;
+	jugadorActual = lista->getJugador(nombres);
+
 	return true;
 }
 
