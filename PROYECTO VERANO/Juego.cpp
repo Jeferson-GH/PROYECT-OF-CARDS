@@ -65,15 +65,9 @@ void Juego::jugar()
 			std::cout << "Ingrese el nombre del archivo a cargar: ";
 			std::cin >> nombreArchivo;
 			Archivo archivo(nombreArchivo);
-			archivo.cargarPartida(nombreArchivo, listaJugadores, dealer, jugadorActual);
+			archivo.cargarPartida(nombreArchivo, listaJugadores, baraja, dealer, jugadorActual);
 			system("cls");
-
 			while (opcion == 1) {
-
-				baraja->inicializar(); //Se inicializa el mazo 
-
-				baraja->barajar(); //Se barajan las cartas 
-
 				if (repetirPartida)
 					repartirCartas();
 

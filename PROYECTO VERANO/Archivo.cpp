@@ -26,10 +26,12 @@ void Archivo::guardarPartida(Lista* lista, Mazo* baraja, Nodo* jugadorActual)
 	archivo << jugadorActual->dato->getMano()->getCantidad() << '\n';
 	archivo << jugadorActual->dato->guardarMano();
 	archivo << nicknameJugadorActual << '\n';
+
+	archivo << baraja->guardarMazo() << '\n';
 	archivo.close();
 }
 
-bool Archivo::cargarPartida(std::string nombreArchivo, Lista* &lista, Dealer* &dealer, Nodo* &jugadorActual)
+bool Archivo::cargarPartida(std::string nombreArchivo, Lista* &lista, Mazo* &baraja, Dealer* &dealer, Nodo* &jugadorActual)
 {
 	std::ifstream archivo;
 	archivo.open(nombreArchivo);
@@ -68,6 +70,22 @@ bool Archivo::cargarPartida(std::string nombreArchivo, Lista* &lista, Dealer* &d
 	archivo >> nombres;
 	jugadorActual = lista->getJugador(nombres);
 
+	int cantidad = 0;
+	while (archivo >> valores) {
+		Carta* carta = new Carta;
+		carta->setValor(valores);
+		archivo >> valores;
+		carta->setPalo(valores);
+		archivo >> tipo;
+		carta->setTipo(tipo);
+		archivo >> valores;
+		carta->setBocaAbajo(valores);
+		baraja->cambiarCarta(carta, cantidad);
+		cantidad++;
+		delete carta;
+	}
+	baraja->setCantidad(cantidad);
+	archivo.close();
 	return true;
 }
 

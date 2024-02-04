@@ -74,3 +74,37 @@ Carta** Mazo::getMazo()
 {
     return carta;
 }
+
+int Mazo::getCantidad()
+{
+    return cant;
+}
+void Mazo::setCantidad(int x)
+{
+    cant=x;
+}
+
+std::string Mazo::guardarMazo()
+{
+    std::stringstream s;
+    int x;
+    char y;
+    for (int i = 0;i < cant;i++) {
+        s << carta[i]->getValor() << " ";
+        x = carta[i]->getPalo();
+        s << x << " ";
+        y = carta[i]->getTipo();
+        s << y << " ";
+        s << carta[i]->getBocaAbajo() << '\n';
+    }
+    return s.str();
+}
+
+void Mazo::cambiarCarta(Carta* c, int pos)
+{
+    carta[pos]->setValor(c->getValor());
+    carta[pos]->setPalo(c->getPalo());
+    carta[pos]->setTipo(c->getTipo());
+    carta[pos]->setBocaAbajo(c->getBocaAbajo());
+
+}

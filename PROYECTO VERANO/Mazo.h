@@ -14,6 +14,9 @@ public:
 	Carta* tomarCarta();
 	std::string mostrar();
 	Carta** getMazo();
-
+	int getCantidad();
+	void setCantidad(int);
+	std::string guardarMazo();
+	void cambiarCarta(Carta*, int);
 };
 #endif
