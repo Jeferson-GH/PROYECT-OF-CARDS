@@ -2,15 +2,10 @@
 #define CARTA_H
 #include <iostream>
 
-class Carta
+class Carta 
 {
-private:
-    int valor;
-    char palo;
-    char tipo;
-    bool bocaAbajo;
-
 public:
+
     Carta();
     ~Carta();
 
@@ -25,8 +20,15 @@ public:
     void setTipo(char);
 
     void voltear();
-    std::string mostrar() const;
+    std::string mostrar();
     
+private:
+
+    int valor;
+    char palo;
+    char tipo;
+    bool bocaAbajo;
+
 };
 
 

@@ -1,28 +1,23 @@
 #include "Carta.h"
 #include <sstream>
 
-
+//Constructor y destructor
 Carta::Carta() : valor{ 0 }, palo(0), tipo{ ' ' }, bocaAbajo{ true } {}
-
 Carta::~Carta() {}
 
+//Metodos get
 int Carta::getValor()  { return valor; }
-
 char Carta::getPalo()  { return palo; }
-
 char Carta::getTipo() { return tipo; }
-
 bool Carta::getBocaAbajo()  { return bocaAbajo; }
 
+//Metodos set
 void Carta::setValor(int nuevoValor) { valor = nuevoValor; }
-
 void Carta::setPalo(int nuevoPalo) { palo = nuevoPalo; }
-
 void Carta::setBocaAbajo(bool nuevoEstado) { bocaAbajo = nuevoEstado; }
-
 void Carta::setTipo(char nuevoTipo) { tipo = nuevoTipo; }
 
-void Carta::voltear() //Voltea la carta
+void Carta::voltear() //Voltea la carta 
 {
 	if (bocaAbajo)
 		bocaAbajo = false;
@@ -30,7 +25,7 @@ void Carta::voltear() //Voltea la carta
 		bocaAbajo = true;
 }
 
-std::string Carta::mostrar() const
+std::string Carta::mostrar()
 {
     std::stringstream s;
     if (bocaAbajo) //No se muestra si esta boca abajo
@@ -38,7 +33,7 @@ std::string Carta::mostrar() const
         s << "???";
     }
     else 
-    { //Muestra el color, palo, y valor de la carta
+    { //Muestra el palo, y valor de la carta
         s << "[" << palo << "] ";
         switch (tipo)
         {

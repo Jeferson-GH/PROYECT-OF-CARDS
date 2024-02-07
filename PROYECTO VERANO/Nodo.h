@@ -4,8 +4,8 @@
 
 struct Nodo {
 
-	Nodo* next;
 	JugadorGenerico* dato;
+	Nodo* next;
 
 };
 

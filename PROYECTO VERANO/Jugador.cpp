@@ -2,18 +2,11 @@
 #include "Mazo.h"
 #include <sstream>
 
-Jugador::Jugador() : JugadorGenerico()
-{
-	nickname = "";
-	mano = new Mano;
-}
-Jugador::Jugador(std::string nombre) : JugadorGenerico()
-{
-	nickname = nombre;
-	mano = new Mano;
-}
+//Constructores
+Jugador::Jugador() : JugadorGenerico() {}
+Jugador::Jugador(std::string nombre) : JugadorGenerico() { nickname = nombre; }
 
-std::string Jugador::mostrar()
+std::string Jugador::mostrar() //Muestra la informacion del jugador en una hilera
 {
 	std::stringstream s;
 	s << "Jugador '" << nickname << "':" << '\n';

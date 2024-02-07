@@ -3,21 +3,25 @@
 #include "Mano.h"
 
 class JugadorGenerico {
-protected:
-	std::string nickname;
-	Mano* mano;
+
 public:
 	JugadorGenerico();
 	~JugadorGenerico();
+
 	int getPuntos();
 	Mano* getMano();
 	std::string getNickname();
-	void pedirCarta(Mazo*) ;
+
+	void pedirCarta(Mazo*);
 	bool sePaso();
-	virtual std::string mostrar() = 0;
 	void cambiarValorAS();
 	std::string guardarMano();
-};
+	virtual std::string mostrar() = 0;
 
+protected:
+	std::string nickname;
+	Mano* mano;
+
+};
 
 #endif 

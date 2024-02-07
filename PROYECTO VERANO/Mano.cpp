@@ -3,80 +3,48 @@
 
 //Constructor y destructor
 Mano::Mano(): inicio{ nullptr } {}
-Mano::~Mano() { limpiar(); }
+Mano::~Mano() { limpiar(); } 
 
-Carta* Mano::getCarta(int n) //Retorna la carta en la posicion n
+//Getters
+int Mano::getCantidad() //Retorna la cantidad de nodos que hay en la lista
+{
+	int cant = 0;
+	NodoMano* tmp = inicio;
+	while (tmp != nullptr) {
+		cant++;
+		tmp = tmp->next;
+	}
+	return cant;
+}
+Carta* Mano::getCarta(int pos) //Retorna la carta en la posicion 'pos'
 {
 	NodoMano* tmp = inicio;
 	int cont = 0;
-	while (tmp->next != nullptr) {
-		if (cont == n) { //Recorre la lista hasta llegar a n
-			return tmp->carta;
-		}
+
+	while (tmp != nullptr and cont < pos) { //Sale del ciclo si la lista se acaba o si llega a la posicion
 		tmp = tmp->next;
 		cont++;
 	}
-	if (cont == n) { 
-		return tmp->carta;
+	if (tmp != nullptr) {  
+		return tmp->carta; //Retorna la carta[pos]
 	}
-	return nullptr;
+	else {
+		return nullptr; //Retorna nullptr si se llega al final
+	}
 }
-
-Carta* Mano::getAS()
+Carta* Mano::getAS() //Recorre la lista en busca de un AS
 {
 	if (hayAS()) {
 		NodoMano* tmp = inicio;
 		while (tmp != nullptr) {
 			if (tmp->carta->getTipo() == 'A')
-				return tmp->carta;
+				return tmp->carta; //Si se encuentra, retorna la carta AS
 			tmp = tmp->next;
 		}
 	}
-	return nullptr;
+	return nullptr; //Retorna nullptr si no se encuentra
 }
-
-bool Mano::hayAS()
-{
-	NodoMano* tmp = inicio;
-	while (tmp->next != nullptr) {
-		if (tmp->carta->getTipo() == 'A')
-			return true;
-		tmp = tmp->next;
-	}
-	if (tmp->carta->getTipo() == 'A')
-		return true;
-	return false;
-}
-
-void Mano::agregarCarta(Carta* c) //Inserta una carta a la Mano
-{
-	if (inicio == nullptr) { //Si esta vacia, se crea un Nodo
-		inicio = new NodoMano;
-		inicio->carta = c;
-		inicio->next = nullptr;
-	}
-	else { //Si hay un elemento, se inserta en la ultima posicion
-		NodoMano* tmp = inicio;
-		while (tmp->next != nullptr) {
-			tmp = tmp->next;
-		}
-		tmp->next = new NodoMano;
-		tmp->next->carta = c;
-		tmp->next->next = nullptr;
-	}
-}
-
-void Mano::limpiar() //Limpia la mano actual
-{
-	NodoMano* tmp;
-	while (inicio != nullptr) {
-		tmp = inicio;
-		inicio = inicio->next;
-		delete tmp;
-	}
-}
-
-int Mano::getPuntos() //Suma los puntos de las cartas en Mano
+int Mano::getPuntos() //Retorna la suma de los puntos de las cartas en mano
 {
 	int suma = 0;
 	NodoMano* tmp = inicio;
@@ -87,7 +55,46 @@ int Mano::getPuntos() //Suma los puntos de las cartas en Mano
 	return suma;
 }
 
-std::string Mano::mostrar() //Muestra la mano
+bool Mano::hayAS() //Recorre la lista y confirma la existencia de un AS
+{
+	NodoMano* tmp = inicio;
+	while (tmp != nullptr) {
+		if (tmp->carta->getTipo() == 'A')
+			return true;
+		tmp = tmp->next;
+	}
+	return false;
+}
+
+void Mano::agregarCarta(Carta* c) //Inserta una carta a la Mano
+{
+	if (inicio == nullptr) { 
+		inicio = new NodoMano; //Si esta vacia, se crea un Nodo
+		inicio->carta = c; //Se asigna el parametro a la nueva carta
+		inicio->next = nullptr;
+	}
+	else { //Si ya hay elementos, se inserta en la ultima posicion de la lista
+		NodoMano* tmp = inicio;
+		while (tmp->next != nullptr) {
+			tmp = tmp->next;
+		}
+		tmp->next = new NodoMano;
+		tmp->next->carta = c;
+		tmp->next->next = nullptr;
+	}
+}
+
+void Mano::limpiar() //Limpia la mano actual, comparte funcionalidad con el destructor
+{
+	NodoMano* tmp;
+	while (inicio != nullptr) {
+		tmp = inicio;
+		inicio = inicio->next;
+		delete tmp;
+	}
+}
+
+std::string Mano::mostrar() //Muestra la mano en una hilera
 {
 	std::stringstream s;
 	NodoMano* tmp = inicio;
@@ -103,34 +110,19 @@ std::string Mano::mostrar() //Muestra la mano
 	return s.str();
 }
 
-std::string Mano::guardarCartas()
+std::string Mano::guardarCartas() //Guarda los atributos de todas las cartas en mano
 {
+	int palo;
 	std::stringstream s;
 	NodoMano* tmp = inicio;
-	int palo;
-	while (tmp->next != nullptr) {
+	while (tmp != nullptr) {
 		s << tmp->carta->getValor() << ' ';
-		palo = tmp->carta->getPalo();
+		palo = tmp->carta->getPalo(); //Guarda el valor ascii del char
 		s << palo << ' ';
 		s << tmp->carta->getTipo() << ' ';
 		s << tmp->carta->getBocaAbajo() << '\n';
 		tmp = tmp->next;
 	}
-	s << tmp->carta->getValor() << ' ';
-	palo = tmp->carta->getPalo();
-	s << palo << ' ';
-	s << tmp->carta->getTipo() << ' ';
-	s << tmp->carta->getBocaAbajo() << '\n';
 	return s.str();
 }
 
-int Mano::getCantidad()
-{
-	int cant = 0;
-	NodoMano* tmp = inicio;
-	while (tmp != nullptr) {
-		cant++;
-		tmp = tmp->next;
-	}
-	return cant;
-}

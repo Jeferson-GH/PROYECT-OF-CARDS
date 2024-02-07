@@ -3,20 +3,27 @@
 #include "NodoMano.h"
 
 class Mano {
-private:
-	NodoMano* inicio;
+
 public:
+
 	Mano();
 	~Mano();
+
 	Carta* getCarta(int pos);
 	Carta* getAS();
 	int getPuntos();
-	bool hayAS();
+	int getCantidad();
+
 	void agregarCarta(Carta* c);
+	bool hayAS();
 	void limpiar();
 	std::string mostrar();
 	std::string guardarCartas();
-	int getCantidad();
+
+private:
+
+	NodoMano* inicio;
+
 };
 
 #endif

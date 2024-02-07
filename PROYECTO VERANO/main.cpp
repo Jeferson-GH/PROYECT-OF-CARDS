@@ -3,8 +3,9 @@
 
 int main() {
 	
-	Juego juego1;
-	juego1.jugar();
+	Juego* juego = new Juego;
+	juego->jugar();
+	delete juego;
 
 	return 0;
 }

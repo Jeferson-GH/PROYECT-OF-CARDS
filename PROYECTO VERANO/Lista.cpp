@@ -1,57 +1,53 @@
 #include <sstream>
 #include "Lista.h"
 
+//Constructor y destructor
 Lista::Lista(): inicio{ nullptr } {}
-
 Lista::~Lista() { limpiar(); }
 
+//Getters
 Nodo* Lista::getInicio() { return inicio; }
-
-bool Lista::listaVacia() { return inicio == nullptr; }
-
-Nodo* Lista::getJugador(std::string n)
+Nodo* Lista::getJugador(std::string n) //Busca al jugador con el nombre ingresado por parametro
 {
-	if (!listaVacia()) {
+	if (inicio != nullptr) {
 		Nodo* tmp = inicio;
-		while (tmp->next != nullptr) {
+		while (tmp != nullptr) {
 			if (tmp->dato->getNickname() == n) {
 				return tmp;
 			}
 			tmp = tmp->next;
 		}
-		if (tmp->dato->getNickname() == n) {
-			return tmp;
-		}
 	}
-	return nullptr;
+	return nullptr; //Si no se encuentra, retorna nullptr
 }
-
-Nodo* Lista::getJugador(int pos)
+Nodo* Lista::getJugador(int pos) //Busca al jugador con la posicion ingresada por parametro
 {
-	int c = 0;
+	int cont = 0;
+	Nodo* tmp = inicio;
+	while (tmp != nullptr and cont < pos) { //Recorre el ciclo hasta la posicion o hasta que se termine la lista
+		tmp = tmp->next;
+		cont++;
+	}
+
+	if (tmp != nullptr) {
+		return tmp;
+	}
+	else {
+		return nullptr; 
+	}
+}
+int Lista::getCantidad() //Retorna la cantidad de elementos en la lista
+{
+	int cont = 0;
 	Nodo* tmp = inicio;
 	while (tmp != nullptr) {
-		if (c == pos) {
-			return tmp;
-		}
-		tmp = tmp->next;
-		c++;
-	}
-	return nullptr;
-}
-
-int Lista::getCantidad()
-{
-	int c = 0;
-	Nodo* tmp = inicio;
-	while (tmp != nullptr) {
-		c++;
+		cont++;
 		tmp = tmp->next;
 	}
-	return c;
+	return cont;
 }
 
-void Lista::insertar(JugadorGenerico* c)
+void Lista::insertar(JugadorGenerico* c) //Inserta un jugador al final de la lista
 {
 	if (inicio == nullptr) { //Si esta vacia, se crea un Nodo
 		inicio = new Nodo;
@@ -69,7 +65,35 @@ void Lista::insertar(JugadorGenerico* c)
 	}
 }
 
-void Lista::limpiar()
+void Lista::borrar(std::string elim) //Borra el nodo del jugador con el nombre pasado por parametro
+{
+	if (inicio == nullptr)
+		return; //Sale del metodo si la lista esta vacia
+
+	Nodo* eliminar = getJugador(elim); //Se asigna el nodo que se quiere eliminar
+	if (eliminar == nullptr) { //Si no se encontro el jugador, sale del metodo
+		return;
+	}
+
+	Nodo* tmp = inicio;
+	if (eliminar->dato == inicio->dato) { //Se elimina la primera posicion
+		inicio = inicio->next;
+		delete tmp;
+	}
+	else { //Se recorre la lista, ubica el nodo a eliminar y se ajustan los 'next'
+		Nodo* anterior = nullptr;
+		while (tmp != eliminar) {
+			anterior = tmp;
+			tmp = tmp->next;
+		}
+		if (anterior != nullptr) {
+			anterior->next = eliminar->next;
+			delete eliminar;
+		}
+	}
+}
+
+void Lista::limpiar() //Limpia el contenido de la lista, comparte funcionalidad con el destructor
 {
 	Nodo* tmp;
 	while (inicio != nullptr) {
@@ -79,40 +103,15 @@ void Lista::limpiar()
 	}
 }
 
-std::string Lista::guardarNicknames()
+std::string Lista::guardarNicknames() //Guarda todos los nicknames de la lista en una hilera
 {
 	std::stringstream s;
 	Nodo* tmp = inicio;
-	while (tmp->next != nullptr) {
+	while (tmp->next != nullptr) { //Al llegar al ultimo jugador, sale del ciclo ya que el ultimo sera el Dealer
 		s << tmp->dato->getNickname() << '\n';
 		tmp = tmp->next;
 	}
 	return s.str();
-}
-
-void Lista::borrar(std::string elim)
-{
-	if (!listaVacia()) {
-		Nodo* eliminar = getJugador(elim);
-		if (eliminar != nullptr) {
-			Nodo* tmp = inicio;
-			if (eliminar->dato == inicio->dato) {
-				inicio = inicio->next;
-				delete tmp;
-			}
-			else {
-				Nodo* anterior = nullptr;
-				while (tmp != eliminar) {
-					anterior = tmp;
-					tmp = tmp->next;
-				}
-				if (anterior != nullptr) {
-					anterior->next = eliminar->next;
-					delete eliminar;
-				}
-			}
-		}
-	}
 }
 
 
