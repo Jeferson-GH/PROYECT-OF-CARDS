@@ -134,6 +134,7 @@ void Juego::agregarJugadores() //Agrega jugadores a la lista de juego.
 				std::string nickname;
 				bool nicknameRepetido;
 				do {
+					std::cout << ".....Ingresar Nickname sin espacios.....\n";
 					std::cout << "Nickname Jugador [" << i + 1 << "]: ";
 					std::cin >> nickname;
 
@@ -239,7 +240,9 @@ bool Juego::partida() //Opera las elecciones del jugador actual
 		}
 		std::cin >> opcion; //Se habilita la opcion de escoger la jugada
 		switch (opcion) { //Se evalua la jugada
-		case 'd': //Agrega una carta a la mano y vuelve a desplegar en pantalla
+		case 'd':
+		case 'D':
+		//Agrega una carta a la mano y vuelve a desplegar en pantalla
 			jugadorActual->dato->pedirCarta(baraja);
 			mostrarJuego();
 			if (pierde()) { //En el caso que pierda el jugador actual:
@@ -250,10 +253,12 @@ bool Juego::partida() //Opera las elecciones del jugador actual
 				system("pause");
 			}
 			break;
-		case 'p':
+		case 'p' :
+		case 'P':
 			pasarTurno(); //Pasa el turno
 			break;
-		case 'g': //Guardar partida
+		case 'g':
+		case 'G'://Guardar partida
 		{		
 			std::string nombreArchivo;
 			system("cls");
@@ -264,6 +269,7 @@ bool Juego::partida() //Opera las elecciones del jugador actual
 			return true; //Devuelve true para salir 
 		}
 		case 's':
+		case 'S':
 			return true; //Salir del juego 
 		}
 		system("cls");
