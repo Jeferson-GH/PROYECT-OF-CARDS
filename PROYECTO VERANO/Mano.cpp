@@ -2,8 +2,8 @@
 #include "sstream"
 
 //Constructor y destructor
-Mano::Mano(): inicio{ nullptr } {}
-Mano::~Mano() { limpiar(); } 
+Mano::Mano() : inicio{ nullptr } {}
+Mano::~Mano() { limpiar(); }
 
 //Getters
 int Mano::getCantidad() //Retorna la cantidad de nodos que hay en la lista
@@ -25,7 +25,7 @@ Carta* Mano::getCarta(int pos) //Retorna la carta en la posicion 'pos'
 		tmp = tmp->next;
 		cont++;
 	}
-	if (tmp != nullptr) {  
+	if (tmp != nullptr) {
 		return tmp->carta; //Retorna la carta[pos]
 	}
 	else {
@@ -68,7 +68,7 @@ bool Mano::hayAS() //Recorre la lista y confirma la existencia de un AS
 
 void Mano::agregarCarta(Carta* c) //Inserta una carta a la Mano
 {
-	if (inicio == nullptr) { 
+	if (inicio == nullptr) {
 		inicio = new NodoMano; //Si esta vacia, se crea un Nodo
 		inicio->carta = c; //Se asigna el parametro a la nueva carta
 		inicio->next = nullptr;
