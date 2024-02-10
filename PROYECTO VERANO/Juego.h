@@ -20,7 +20,7 @@ public:
 	void agregarJugadores();
 	void repartirCartas();
 	void mostrarJuego();
-	
+	void mostrar();
 	void resultados();
 	void turnoDealer();
 	bool partida();

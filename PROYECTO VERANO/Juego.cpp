@@ -5,7 +5,9 @@
 #include "Jugador.h"
 #include "Mano.h"
 #include "Archivo.h"
-
+#include <io.h>
+#include <fcntl.h>
+#include <windows.h>
 //Constructor y destructor
 Juego::Juego() : baraja{ new Mazo }, dealer{ new Dealer }, listaJugadores { new Lista }, jugadorActual { nullptr } {}
 Juego::~Juego() { delete baraja; delete dealer;	delete listaJugadores; }
@@ -14,8 +16,8 @@ bool Juego::pierde() { return jugadorActual->dato->sePaso(); } //Determina si el
 
 void Juego::agregarJugador(JugadorGenerico* n) { listaJugadores->insertar(n); } //Se agrega un jugador a la lista
 
-void Juego::jugar()
-{
+void Juego::jugar(){
+	mostrar();
 	int opcion;
 	do { //Menu principal
 		std::cout << "\t Juego Blackjack \n" << '\n';
@@ -188,6 +190,40 @@ void Juego::mostrarJuego() //Se muestra el estado actual del juego
 	std::cout << dealer->mostrar() << '\n';
 	std::cout << jugadorActual->dato->mostrar();
 	std::cout << "(D)eme Carta  -  (P)asar  -  (G)uardar Partida  -  (S)alir\n";
+}
+
+void Juego::mostrar(){
+	std::cout << "***************************************" << '\n';
+	std::cout << "* BIENVENIDO A ESTE MARAVILLOSO JUEGO *" << '\n';
+	std::cout << "***************************************" << '\n';
+	system("pause");
+	system("cls");
+	std::cout << "***************************************" << '\n';
+	std::cout << "*  DONDE NECESITAS GANARLE AL DEALER  *" << '\n';
+	std::cout << "*   Y OBTENER EL MAZO MAS ALTO SIN    *" << '\n';
+	std::cout << "*       PASARSE DE 21 PUNTOS          *" << '\n';
+	std::cout << "***************************************" << '\n';
+	system("pause");
+	system("cls");
+	std::cout << "***************************************" << '\n';
+	std::cout << "*************** ESTO ES ***************" << '\n';
+	std::cout << "***************************************" << '\n';
+	system("pause");
+	system("cls");
+	std::cout << "***********************" << '\n';
+	std::cout << "*                     *" << '\n';
+	std::cout << "*      BLACK JACK     *" << '\n';
+	std::cout << "*   ________________  *" << '\n';
+	std::cout << "*  |D      *       C| *" << '\n';
+	std::cout << "*  |    *     *     | *" << '\n';
+	std::cout << "*  |  *    21   *   | *" << '\n';
+	std::cout << "*  |    *     *     | *" << '\n';
+	std::cout << "*  |P      *       T| *" << '\n';
+	std::cout << "*  |________________| *" << '\n';
+	std::cout << "*                     *" << '\n';
+	std::cout << "***********************" << '\n';
+	system("pause");
+	system("cls");
 }
 
 void Juego::turnoDealer() //Evalua la jugada que tomara el dealer dependiendo de los puntos que tenga
