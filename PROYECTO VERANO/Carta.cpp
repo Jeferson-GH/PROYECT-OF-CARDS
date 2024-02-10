@@ -12,6 +12,7 @@ char Carta::getTipo() { return tipo; }
 bool Carta::getBocaAbajo()  { return bocaAbajo; }
 
 //Metodos set
+
 void Carta::setValor(int nuevoValor) { valor = nuevoValor; }
 void Carta::setPalo(int nuevoPalo) { palo = nuevoPalo; }
 void Carta::setBocaAbajo(bool nuevoEstado) { bocaAbajo = nuevoEstado; }

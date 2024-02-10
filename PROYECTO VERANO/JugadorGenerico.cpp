@@ -6,9 +6,9 @@ JugadorGenerico::JugadorGenerico() : nickname{ "" }, mano{ new Mano } {}
 JugadorGenerico::~JugadorGenerico() { delete mano; }
 
 //Getters
-std::string JugadorGenerico::getNickname() { return nickname; } 
-Mano* JugadorGenerico::getMano() { return mano; } 
-int JugadorGenerico::getPuntos() { return mano->getPuntos(); } 
+std::string JugadorGenerico::getNickname() { return nickname; }
+Mano* JugadorGenerico::getMano() { return mano; }
+int JugadorGenerico::getPuntos() { return mano->getPuntos(); }
 
 void JugadorGenerico::pedirCarta(Mazo* mazo) { mano->agregarCarta(mazo->tomarCarta()); } //Se toma una carta del mazo y se agrega a la mano del jugador
 
