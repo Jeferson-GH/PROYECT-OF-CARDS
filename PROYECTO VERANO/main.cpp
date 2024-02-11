@@ -13,8 +13,8 @@ int main() {
 /*
 Estudiantes:
 
-	Jeferson David Garita Hernández | 2-0860-0321
-	Ahymará Ureña Chanto | 3-0536-0049
+	Jeferson David Garita Hernandez | 2-0860-0321
+	Ahymara Urena Chanto | 3-0536-0049
 	Emiliano Medina Contreras | 1-1949-0422
 
 */
