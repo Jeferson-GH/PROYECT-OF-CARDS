@@ -5,9 +5,7 @@
 #include "Jugador.h"
 #include "Mano.h"
 #include "Archivo.h"
-#include <io.h>
-#include <fcntl.h>
-#include <windows.h>
+
 //Constructor y destructor
 Juego::Juego() : baraja{ new Mazo }, dealer{ new Dealer }, listaJugadores { new Lista }, jugadorActual { nullptr } {}
 Juego::~Juego() { delete baraja; delete dealer;	delete listaJugadores; }
@@ -353,7 +351,7 @@ void Juego::restablecerPartida() //Se reestablece el estado del juego para poder
 		jugadorActual->dato->getMano()->limpiar(); //Se limpian las manos de todos los jugadores
 		jugadorActual = jugadorActual->next;
 	}
-	delete dealer; //Se crean nuevas instancias de mazo y dealer
+	listaJugadores->borrar("Dealer");
 	dealer = new Dealer;
 	delete baraja;
 	baraja = new Mazo; 
