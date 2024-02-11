@@ -353,6 +353,7 @@ void Juego::restablecerPartida() //Se reestablece el estado del juego para poder
 	}
 	listaJugadores->borrar("Dealer");
 	dealer = new Dealer;
+	listaJugadores->insertar(dealer);
 	delete baraja;
 	baraja = new Mazo; 
 	jugadorActual = listaJugadores->getInicio(); //Se reestablece el jugadorActual al inicio de la lista
